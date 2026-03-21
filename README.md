@@ -39,7 +39,7 @@
 | 记忆系统 | Mem0 | 三层记忆架构 |
 | 大模型 | 智谱/千问/MiniMax | 企业级 coding plan |
 | 知识库 | AFFiNE | 开源自建 |
-| 开发工具 | Claude Code、OpenCode | 开源免费 + 数据安全 |
+| 开发工具 | OpenCode | 开源免费 + 数据安全 |
 | 控制面板 | openclaw-mission-control | AI 代理编排仪表板 |
 
 ---
