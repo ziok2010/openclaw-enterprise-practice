@@ -1,3 +1,7 @@
+[![GitHub stars](https://img.shields.io/github/stars/ziok2010/openclaw-enterprise-practice.svg?style=social)](https://github.com/ziok2010/openclaw-enterprise-practice)
+[![GitHub forks](https://img.shields.io/github/forks/ziok2010/openclaw-enterprise-practice.svg?style=social)](https://github.com/ziok2010/openclaw-enterprise-practice)
+[![GitHub issues](https://img.shields.io/github/issues/ziok2010/openclaw-enterprise-practice.svg)](https://github.com/ziok2010/openclaw-enterprise-practice/issues)
+
 # OpenClaw Enterprise Practice
 
 > 企业 AI 工程化实战笔记 - 从零搭建多智能体协作平台
