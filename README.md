@@ -269,7 +269,15 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 
 如果这个项目对你有帮助，请给个 Star ⭐
 
-[![Star History Chart](https://api.star-history.com/svg?repos=ziok2010/openclaw-enterprise-practice&type=Date)](https://star-history.com/#ziok2010/openclaw-enterprise-practice&Date)
+## Star History
+
+<a href="https://www.star-history.com/?repos=ziok2010%2Fopenclaw-enterprise-practice&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=ziok2010/openclaw-enterprise-practice&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=ziok2010/openclaw-enterprise-practice&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=ziok2010/openclaw-enterprise-practice&type=date&legend=top-left" />
+ </picture>
+</a>
 
 ---
 
