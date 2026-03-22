@@ -257,18 +257,16 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 感谢以下开源项目：
 
 - [OpenClaw](https://github.com/openclaw/openclaw) - AI 智能体框架
-- [Matrix/Synapse](https://github.com/matrix-org/synapse) - 去中心化通讯协议
+- [Matrix/Synapse](https://github.com/element-hq/synapse) - 去中心化通讯协议
 - [Element](https://github.com/element-hq/element-web) - Matrix Web 客户端
 - [Mem0](https://github.com/mem0ai/mem0) - AI 记忆系统
 - [AFFiNE](https://github.com/toeverything/AFFiNE) - 开源知识库
 
 ---
 
-## ⭐ Star History
-
 如果这个项目对你有帮助，请给个 Star ⭐
 
-## Star History
+## ⭐ Star History
 
 <a href="https://www.star-history.com/?repos=ziok2010%2Fopenclaw-enterprise-practice&type=date&legend=top-left">
  <picture>
