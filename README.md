@@ -247,9 +247,8 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 
 ## 📞 联系方式
 
-- **微信号**：bugfucker（备注"AI 工程化实战派"）
+- **公众号**：AI 工程化实战派
 - **GitHub Issues**：[提交问题](https://github.com/ziok2010/openclaw-enterprise-practice/issues)
-- **邮箱**：[你的邮箱]
 
 ---
 

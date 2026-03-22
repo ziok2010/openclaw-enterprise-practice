@@ -231,7 +231,6 @@
 
 - **留言**：每篇文章末尾可以留言，我会尽量回复
 - **公众号**：AI工程化实战派
-- **微信**：BugFucker，备注"AI工程化实战派"
 - **GitHub**：https://github.com/ziok2010/openclaw-enterprise-practice
 - **问题反馈**：如果你踩了不同的坑，欢迎在 GitHub Issues 分享
 
