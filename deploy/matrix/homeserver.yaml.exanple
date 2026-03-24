@@ -1,0 +1,54 @@
+# Synapse 主配置文件，首次运行会自动生成，需要修改以下关键配置
+
+# ==================== 数据库配置 ====================
+# 默认使用 SQLite，生产环境必须改用 PostgreSQL
+database:
+  name: psycopg2
+  args:
+    user: synapse
+    password: your_secure_password_here        # 与 docker-compose 中一致
+    database: synapse
+    host: postgres                             # PostgreSQL 容器服务名
+    cp_min: 5
+    cp_max: 10
+
+# ==================== 服务器配置 ====================
+server_name: "192.168.1.100"                    # 服务器名称，决定用户 ID 格式
+public_baseurl: "https://192.168.1.100/"        # 客户端访问的公开 URL（HTTPS）
+
+# 禁用媒体认证，解决 Element Web 端无法下载文件的问题（已知 bug）
+enable_authenticated_media: false
+report_stats: false
+media_store_path: /data/media_store
+# 用于 register_new_matrix_user 等管理命令；请妥善保管，勿提交到公开仓库
+registration_shared_secret: "cfC8B9fv77PTyFVjC0wxzong5gL8Lotfufz2Bvb8aEWEP"
+
+# ==================== 监听配置 ====================
+# 内网部署通过 Nginx 代理，监听本地地址即可
+listeners:
+  - port: 8008
+    tls: false                                 # TLS 由 Nginx 处理
+    type: http
+    x_forwarded: true                          # 信任 Nginx 传递的真实 IP
+    bind_addresses: ['0.0.0.0']
+    resources:
+      - names: [client, federation]
+        compress: false
+
+  # Federation 端口（内网可选）
+  - port: 8448
+    tls: false
+    type: http
+    x_forwarded: true
+    bind_addresses: ['0.0.0.0']
+    resources:
+      - names: [federation]
+        compress: false
+
+# ==================== 注册配置 ====================
+# 首次部署时开启，创建完管理员账号后务必关闭
+enable_registration: true                        # 允许新用户注册
+enable_registration_without_verification: true   # 无需邮箱/手机验证
+
+# ==================== 其他配置 ====================
+url_preview_enabled: false                      # 内网禁用 URL 预览

@@ -1,0 +1,79 @@
+# 内网 HTTPS 完整版部署 - 自签名证书 + Nginx 反向代理
+version: '3.8'
+
+services:
+  # ==================== PostgreSQL 数据库 ====================
+  # Synapse 生产环境必须使用 PostgreSQL，SQLite 性能太差
+  postgres:
+    image: postgres:15-alpine
+    container_name: matrix-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: synapse
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: synapse
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U synapse"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - matrix-network
+
+  # ==================== Synapse Matrix 服务器 ====================
+  # Matrix 协议的核心组件，处理消息存储、用户认证、联邦通信
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: matrix-synapse
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - SYNAPSE_SERVER_NAME=${SERVER_NAME}
+      - SYNAPSE_REPORT_STATS=${SYNAPSE_REPORT_STATS}
+    volumes:
+      - ./data/synapse:/data
+    networks:
+      - matrix-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8008/_matrix/client/versions || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==================== Element Web 前端 ====================
+  # 提供浏览器访问界面，通过 Nginx HTTPS 代理访问
+  element:
+    image: vectorim/element-web:latest
+    container_name: matrix-element
+    restart: unless-stopped
+    volumes:
+      - ./element/config.json:/app/config.json:ro
+    networks:
+      - matrix-network
+
+  # ==================== Nginx HTTPS 反向代理 ====================
+  # 处理 HTTPS 加密、请求转发，解决 Element Web 文件下载问题
+  nginx:
+    image: nginx:alpine
+    container_name: matrix-nginx
+    restart: unless-stopped
+    depends_on:
+      - synapse
+      - element
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    networks:
+      - matrix-network
+
+# ==================== 网络配置 ====================
+networks:
+  matrix-network:
+    driver: bridge
